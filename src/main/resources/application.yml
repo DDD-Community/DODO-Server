@@ -1,0 +1,18 @@
+spring:
+    datasource:
+        driver-class-name: org.mariadb.jdbc.Driver
+        url: jdbc:mariadb://localhost:3307/dodo
+        username: root
+        password: root
+
+    jpa:
+        hibernate:
+            ddl-auto: update
+        properties:
+            hibernate:
+                format_sql: true
+                show-sql: true
+logging:
+    level:
+        org.hibernate.type: trace
+        org.hibernate.SQL: DEBUG
