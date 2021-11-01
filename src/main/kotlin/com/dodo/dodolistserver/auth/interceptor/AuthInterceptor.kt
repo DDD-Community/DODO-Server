@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest
 
 import javax.servlet.http.HttpServletResponse
 
-import com.dodo.dodolistserver.auth.TokenProvider
+import com.dodo.dodolistserver.auth.provider.TokenProvider
 import com.dodo.dodolistserver.auth.util.AuthUtils
 
 import org.springframework.web.servlet.HandlerInterceptor
