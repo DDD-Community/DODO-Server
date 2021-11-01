@@ -1,6 +1,7 @@
 package com.dodo.dodolistserver.auth.advice
 
 import com.dodo.dodolistserver.common.exception.*
+import com.dodo.dodolistserver.common.exception.auth.*
 import org.springframework.http.HttpStatus
 
 import org.springframework.http.ResponseEntity
@@ -54,8 +55,8 @@ class AuthAdviceController {
      * 409 Conflict
      * 이미 동일한 OAUTh로 등록한 회원이 존재하는 경우
      */
-    @ExceptionHandler(OAUthExistException::class)
-    protected fun handleOAuthUserExistException(exception: OAUthExistException): ResponseEntity<String> {
+    @ExceptionHandler(OAuthExistException::class)
+    protected fun handleOAuthUserExistException(exception: OAuthExistException): ResponseEntity<String> {
         log.error(exception.message, exception)
         return ResponseEntity.status(HttpStatus.CONFLICT).body(exception.message)
     }
