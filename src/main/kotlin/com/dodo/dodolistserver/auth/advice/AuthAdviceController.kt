@@ -11,13 +11,10 @@ import lombok.RequiredArgsConstructor
 
 import org.springframework.web.bind.annotation.RestControllerAdvice
 
-import lombok.extern.slf4j.Slf4j
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.web.bind.annotation.ExceptionHandler
 
-
-@Slf4j
 @RestControllerAdvice
 @RequiredArgsConstructor
 class AuthAdviceController {
