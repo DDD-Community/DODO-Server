@@ -22,7 +22,12 @@ repositories {
     mavenCentral()
 }
 
+// @Entity 클래스 바이트 코드 생성 시 인자 없는 기본 생성자 제네레이션을 위한 레퍼런스
+apply(plugin="org.jetbrains.kotlin.plugin.noarg")
+apply(plugin="org.jetbrains.kotlin.plugin.allopen")
+
 dependencies {
+    implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
@@ -30,6 +35,9 @@ dependencies {
     runtimeOnly("org.mariadb.jdbc:mariadb-java-client")
     annotationProcessor("org.projectlombok:lombok")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    implementation("joda-time:joda-time:2.10.12")
+    implementation("com.github.debop:koda-time:1.2.1")
+    implementation("io.jsonwebtoken:jjwt:0.9.1")
 }
 
 tasks.withType<KotlinCompile> {
@@ -41,4 +49,16 @@ tasks.withType<KotlinCompile> {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+}
+
+allOpen {
+    annotation("javax.persistence.Entity")
+    annotation("javax.persistence.MappedSuperclass")
+    annotation("javax.persistence.Embeddable")
+}
+
+noArg {
+    annotation("javax.persistence.Entity")
+    annotation("javax.persistence.MappedSuperclass")
+    annotation("javax.persistence.Embeddable")
 }
