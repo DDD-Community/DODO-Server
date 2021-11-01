@@ -2,7 +2,7 @@ package com.dodo.dodolistserver.auth.resolver
 
 import com.dodo.dodolistserver.user.repository.UserRepository
 
-import com.dodo.dodolistserver.auth.TokenProvider
+import com.dodo.dodolistserver.auth.provider.TokenProvider
 import com.dodo.dodolistserver.common.exception.AuthHeaderOmittedException
 import com.dodo.dodolistserver.common.exception.UserNotFoundException
 import com.dodo.dodolistserver.user.entity.User

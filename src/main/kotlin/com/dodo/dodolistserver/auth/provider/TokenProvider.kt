@@ -1,4 +1,4 @@
-package com.dodo.dodolistserver.auth
+package com.dodo.dodolistserver.auth.provider
 
 import com.dodo.dodolistserver.user.entity.User
 

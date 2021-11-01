@@ -1,4 +1,4 @@
-package com.dodo.dodolistserver.auth
+package com.dodo.dodolistserver.auth.provider
 
 import com.dodo.dodolistserver.common.exception.TokenExpireException
 import com.dodo.dodolistserver.common.exception.TokenValidationException
