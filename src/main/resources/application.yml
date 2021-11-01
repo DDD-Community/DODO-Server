@@ -16,3 +16,10 @@ logging:
     level:
         org.hibernate.type: trace
         org.hibernate.SQL: DEBUG
+
+jwt:
+    token:
+        secret:
+            key: JWTSecretKey
+        expiration:
+            seconds: 60480000
