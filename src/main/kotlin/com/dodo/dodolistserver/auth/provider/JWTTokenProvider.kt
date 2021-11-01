@@ -1,7 +1,6 @@
 package com.dodo.dodolistserver.auth.provider
 
-import com.dodo.dodolistserver.common.exception.TokenExpireException
-import com.dodo.dodolistserver.common.exception.TokenValidationException
+import com.dodo.dodolistserver.common.exception.auth.*
 import com.dodo.dodolistserver.user.entity.User
 import io.jsonwebtoken.Claims
 import io.jsonwebtoken.Jwts
