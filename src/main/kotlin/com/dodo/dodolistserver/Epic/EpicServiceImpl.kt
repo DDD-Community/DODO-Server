@@ -2,6 +2,7 @@ package com.dodo.dodolistserver.Epic
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
+import javax.transaction.Transactional
 
 @Service
 class EpicServiceImpl : EpicService{
@@ -27,6 +28,7 @@ class EpicServiceImpl : EpicService{
         return projectEpic
     }
 
+    @org.springframework.transaction.annotation.Transactional(rollbackFor=[Exception::class])
     override fun editEpic(epic: Epic): Epic? {
         val existEpic = epicRepository.findById(epic.id)
 

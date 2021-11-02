@@ -34,6 +34,7 @@ class TaskServiceImpl : TaskService{
         return userTasks
     }
 
+    @org.springframework.transaction.annotation.Transactional(rollbackFor=[Exception::class])
     override fun editTask(task: Task): Task? {
         val existTask = taskRepository.findById(task.id)
 
