@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service
 class ProejctServiceImpl: ProjectService {
 
     @Autowired
-    private lateinit var projectRepository: ProjectRepository;
+    private lateinit var projectRepository: ProjectRepository
 
     override fun createProject(project: Project): Project? {
         val createdProject = projectRepository.save(project)
@@ -27,6 +27,7 @@ class ProejctServiceImpl: ProjectService {
         return userProjects
     }
 
+    @org.springframework.transaction.annotation.Transactional(rollbackFor=[Exception::class])
     override fun editProject(project: Project): Project? {
         val existProject = projectRepository.findById(project.id)
 
