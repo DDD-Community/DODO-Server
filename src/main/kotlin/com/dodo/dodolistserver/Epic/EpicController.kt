@@ -7,10 +7,7 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api/v1/epics")
-class EpicController {
-
-    @Autowired
-    private lateinit var epicService: EpicService
+class EpicController (private val epicService: EpicService) {
 
     @PostMapping
     fun createEpic(@RequestBody epic: Epic): ResponseEntity<Any> {

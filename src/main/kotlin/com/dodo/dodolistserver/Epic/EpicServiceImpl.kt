@@ -5,10 +5,7 @@ import org.springframework.stereotype.Service
 import javax.transaction.Transactional
 
 @Service
-class EpicServiceImpl : EpicService{
-
-    @Autowired
-    private lateinit var epicRepository: EpicRepository
+class EpicServiceImpl (private val epicRepository: EpicRepository) : EpicService{
 
     override fun createEpic(epic: Epic): Epic? {
         val createdEpic = epicRepository.save(epic)

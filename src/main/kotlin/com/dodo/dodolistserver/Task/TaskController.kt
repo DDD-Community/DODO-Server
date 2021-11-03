@@ -2,16 +2,15 @@ package com.dodo.dodolistserver.Task
 
 import com.dodo.dodolistserver.Task.Task
 import com.dodo.dodolistserver.Task.TaskService
+import lombok.NonNull
+import lombok.RequiredArgsConstructor
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api/v1/tasks")
-class TaskController {
-
-    @Autowired
-    private lateinit var taskService: TaskService
+class TaskController(private val taskService: TaskService) {
 
     @PostMapping
     fun createTask(@RequestBody task: Task): ResponseEntity<Any> {

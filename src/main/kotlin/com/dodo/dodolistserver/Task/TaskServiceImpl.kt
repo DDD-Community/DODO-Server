@@ -1,14 +1,13 @@
 package com.dodo.dodolistserver.Task
 
 import com.dodo.dodolistserver.Task.Task
+import lombok.NonNull
+import lombok.RequiredArgsConstructor
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
 @Service
-class TaskServiceImpl : TaskService{
-
-    @Autowired
-    private lateinit var taskRepository: TaskRepository
+class TaskServiceImpl(private val taskRepository: TaskRepository) : TaskService{
 
     override fun createTask(task: Task): Task? {
         val createdTask = taskRepository.save(task)
