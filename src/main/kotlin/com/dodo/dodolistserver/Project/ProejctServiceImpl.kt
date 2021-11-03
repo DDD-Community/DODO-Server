@@ -4,10 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
 @Service
-class ProejctServiceImpl: ProjectService {
-
-    @Autowired
-    private lateinit var projectRepository: ProjectRepository
+class ProejctServiceImpl(private val projectRepository: ProjectRepository): ProjectService {
 
     override fun createProject(project: Project): Project? {
         val createdProject = projectRepository.save(project)

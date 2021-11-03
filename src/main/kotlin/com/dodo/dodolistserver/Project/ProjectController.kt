@@ -6,10 +6,7 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api/v1/projects")
-class ProjectController {
-
-    @Autowired
-    private lateinit var projectService: ProjectService
+class ProjectController(private val projectService: ProjectService) {
 
     @PostMapping
     fun createProject(@RequestBody project: Project): ResponseEntity<Any> {
