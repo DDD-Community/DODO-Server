@@ -15,5 +15,5 @@ class Project (
     val goal: String,
     val dueDate: LocalDateTime,
     val comment: String,
-    val createdAt: LocalDateTime = LocalDateTime.now()
+    val createdAt: LocalDateTime?
 )
