@@ -1,11 +1,13 @@
 package com.dodo.dodolistserver.Task
 
 import com.dodo.dodolistserver.Epic.Epic
+import lombok.Getter
 import java.time.LocalDateTime
 import javax.persistence.*
 
 
 @Entity
+@Getter
 @Table(name="tasks")
 class Task (
     @Id
@@ -23,6 +25,6 @@ class Task (
     val toDo: String,
     val comment: String,
     val priority :Int,
-    val dueDate: LocalDateTime,
-    val createdAt: LocalDateTime = LocalDateTime.now()
+    val dueDate: LocalDateTime?,
+    val createdAt: LocalDateTime? = LocalDateTime.now()
 )

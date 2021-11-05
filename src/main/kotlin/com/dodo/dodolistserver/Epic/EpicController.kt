@@ -1,12 +1,15 @@
 package com.dodo.dodolistserver.Epic
 
 import com.dodo.dodolistserver.Project.Project
+import lombok.RequiredArgsConstructor
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
+import javax.servlet.http.HttpServletRequest
 
 @RestController
 @RequestMapping("/api/v1/epics")
+@RequiredArgsConstructor
 class EpicController (private val epicService: EpicService) {
 
     @PostMapping
@@ -18,6 +21,7 @@ class EpicController (private val epicService: EpicService) {
     @GetMapping(path = ["/{epicId}"])
     fun getEpicByEpicId(@PathVariable("epicId") epicId: Long): ResponseEntity<Any> {
         val selectedEpic = epicService.getEpicByEpicId(epicId)
+
         return ResponseEntity.ok().body(selectedEpic)
     }
 
