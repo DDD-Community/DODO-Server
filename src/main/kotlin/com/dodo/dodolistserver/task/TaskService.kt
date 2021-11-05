@@ -1,4 +1,4 @@
-package com.dodo.dodolistserver.Task
+package com.dodo.dodolistserver.task
 
 interface TaskService {
     fun createTask(task: Task): TaskDto?

@@ -1,4 +1,4 @@
-package com.dodo.dodolistserver.Epic
+package com.dodo.dodolistserver.epic
 
 import lombok.RequiredArgsConstructor
 import org.mapstruct.factory.Mappers

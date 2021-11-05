@@ -1,6 +1,5 @@
-package com.dodo.dodolistserver.Task
+package com.dodo.dodolistserver.task
 
-import com.dodo.dodolistserver.Epic.Epic
 import lombok.Getter
 import java.time.LocalDateTime
 import javax.persistence.*

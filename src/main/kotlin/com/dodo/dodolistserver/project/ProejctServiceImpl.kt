@@ -1,6 +1,5 @@
-package com.dodo.dodolistserver.Project
+package com.dodo.dodolistserver.project
 
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
 @Service

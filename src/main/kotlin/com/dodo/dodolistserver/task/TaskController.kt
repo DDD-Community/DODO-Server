@@ -1,10 +1,5 @@
-package com.dodo.dodolistserver.Task
+package com.dodo.dodolistserver.task
 
-import com.dodo.dodolistserver.Task.Task
-import com.dodo.dodolistserver.Task.TaskService
-import lombok.NonNull
-import lombok.RequiredArgsConstructor
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 

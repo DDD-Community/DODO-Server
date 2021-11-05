@@ -1,6 +1,5 @@
-package com.dodo.dodolistserver.Project
+package com.dodo.dodolistserver.project
 
-import lombok.AllArgsConstructor
 import lombok.Builder
 import lombok.Getter
 import java.time.LocalDateTime

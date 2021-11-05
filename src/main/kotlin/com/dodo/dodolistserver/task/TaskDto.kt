@@ -1,4 +1,4 @@
-package com.dodo.dodolistserver.Task
+package com.dodo.dodolistserver.task
 
 import lombok.AllArgsConstructor
 import lombok.Builder
