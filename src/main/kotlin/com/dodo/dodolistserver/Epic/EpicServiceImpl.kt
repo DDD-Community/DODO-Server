@@ -1,37 +1,43 @@
 package com.dodo.dodolistserver.Epic
 
+import lombok.RequiredArgsConstructor
+import org.mapstruct.factory.Mappers
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
-import javax.transaction.Transactional
+
 
 @Service
-class EpicServiceImpl (private val epicRepository: EpicRepository) : EpicService{
+@RequiredArgsConstructor
+class EpicServiceImpl @Autowired constructor(
+    private val epicRepository: EpicRepository,
+    private val epicMapper: EpicMapper
+) : EpicService{
 
-    override fun createEpic(epic: Epic): Epic? {
-        val createdEpic = epicRepository.save(epic)
+    override fun createEpic(epic: Epic): EpicDto? {
+        val createdEpic = epicMapper.toDto(epicRepository.save(epic))
 
         return createdEpic
     }
 
-    override fun getEpicByEpicId(epicId: Long): Epic? {
-        val selectedEpic = epicRepository.findById(epicId).get()
+    override fun getEpicByEpicId(epicId: Long): EpicDto? {
+        val selectedEpic = epicMapper.toDto(epicRepository.findById(epicId).get())
 
         return selectedEpic
     }
 
-    override fun getEpicByProjectId(projectId: Long): List<Epic> {
-        val projectEpic = epicRepository.findByProjectId(projectId)
+    override fun getEpicByProjectId(projectId: Long): List<EpicDto> {
+        val projectEpic = epicMapper.toDtos(epicRepository.findByProjectId(projectId))
 
         return projectEpic
     }
 
     @org.springframework.transaction.annotation.Transactional(rollbackFor=[Exception::class])
-    override fun editEpic(epic: Epic): Epic? {
+    override fun editEpic(epic: Epic): EpicDto? {
         val existEpic = epicRepository.findById(epic.id)
 
         if(existEpic.isPresent) {
-            epicRepository.save(epic)
-            return epic
+            val editedEpic = epicMapper.toDto(epicRepository.save(epic))
+            return editedEpic
         }
         return null
     }

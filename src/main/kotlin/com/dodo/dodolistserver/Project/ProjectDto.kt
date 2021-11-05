@@ -1,18 +1,13 @@
 package com.dodo.dodolistserver.Project
 
+import lombok.AllArgsConstructor
+import lombok.Builder
 import lombok.Getter
 import java.time.LocalDateTime
-import java.time.OffsetDateTime
-import java.util.*
-import javax.persistence.*
 
-@Entity
 @Getter
-@Table(name="projects")
-class Project (
-    @Id @GeneratedValue
-    val id: Long,
-    val userId: Long,
+@Builder
+class ProjectDto(
     val isDaily: Boolean,
     val goal: String,
     val dueDate: LocalDateTime,
