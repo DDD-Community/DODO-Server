@@ -1,4 +1,4 @@
-package com.dodo.dodolistserver.Epic
+package com.dodo.dodolistserver.epic
 
 import org.mapstruct.InjectionStrategy
 import org.mapstruct.Mapper

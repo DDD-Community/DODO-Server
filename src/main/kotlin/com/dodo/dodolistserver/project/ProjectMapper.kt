@@ -1,4 +1,4 @@
-package com.dodo.dodolistserver.Project
+package com.dodo.dodolistserver.project
 
 import org.mapstruct.Mapper
 import org.mapstruct.Mapping

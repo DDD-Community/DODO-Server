@@ -1,6 +1,6 @@
-package com.dodo.dodolistserver.Epic
+package com.dodo.dodolistserver.epic
 
-import com.dodo.dodolistserver.Epic.Epic
+import com.dodo.dodolistserver.epic.Epic
 
 interface EpicService {
     fun createEpic(epic: Epic): EpicDto?

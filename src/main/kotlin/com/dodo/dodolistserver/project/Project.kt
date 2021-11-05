@@ -1,9 +1,7 @@
-package com.dodo.dodolistserver.Project
+package com.dodo.dodolistserver.project
 
 import lombok.Getter
 import java.time.LocalDateTime
-import java.time.OffsetDateTime
-import java.util.*
 import javax.persistence.*
 
 @Entity

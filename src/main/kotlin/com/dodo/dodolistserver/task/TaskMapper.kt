@@ -1,7 +1,5 @@
-package com.dodo.dodolistserver.Task
+package com.dodo.dodolistserver.task
 
-import com.dodo.dodolistserver.Project.Project
-import com.dodo.dodolistserver.Project.ProjectDto
 import org.mapstruct.Mapper
 import org.mapstruct.Mapping
 import org.mapstruct.Mappings

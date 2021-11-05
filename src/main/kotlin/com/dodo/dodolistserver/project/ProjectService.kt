@@ -1,6 +1,4 @@
-package com.dodo.dodolistserver.Project
-
-import org.springframework.stereotype.Service
+package com.dodo.dodolistserver.project
 
 interface ProjectService {
     fun createProject(project: Project): ProjectDto?

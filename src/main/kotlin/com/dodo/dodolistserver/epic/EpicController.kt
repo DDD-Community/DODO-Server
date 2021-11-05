@@ -1,11 +1,8 @@
-package com.dodo.dodolistserver.Epic
+package com.dodo.dodolistserver.epic
 
-import com.dodo.dodolistserver.Project.Project
 import lombok.RequiredArgsConstructor
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
-import javax.servlet.http.HttpServletRequest
 
 @RestController
 @RequestMapping("/api/v1/epics")
