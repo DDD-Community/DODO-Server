@@ -10,6 +10,8 @@ open class User (
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long,
 
+    val email: String,
+
     @Enumerated(EnumType.STRING)
     val type: UserType,
 
