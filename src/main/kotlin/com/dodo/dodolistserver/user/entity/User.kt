@@ -4,14 +4,22 @@ import java.sql.Timestamp
 import javax.persistence.*
 
 @Entity
-@Table(name="user")
-open class User (
+@Table(name="user",
+    uniqueConstraints = [
+        UniqueConstraint(
+            columnNames = ["email", "type"]
+        )
+    ]
+)
+class User (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long,
 
+    @Column(name = "email")
     val email: String,
 
+    @Column(name = "type")
     @Enumerated(EnumType.STRING)
     val type: UserType,
 
