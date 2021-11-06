@@ -3,6 +3,8 @@ package com.dodo.dodolistserver.auth.resolver
 import com.dodo.dodolistserver.user.repository.UserRepository
 
 import com.dodo.dodolistserver.auth.provider.TokenProvider
+import com.dodo.dodolistserver.auth.util.AuthUtils
+import com.dodo.dodolistserver.auth.util.AuthUtils.extractTokenByWebRequest
 import com.dodo.dodolistserver.common.exception.auth.*
 import com.dodo.dodolistserver.user.entity.User
 
@@ -18,8 +20,6 @@ import org.springframework.web.method.support.HandlerMethodArgumentResolver
 import org.springframework.web.method.support.ModelAndViewContainer
 import javax.servlet.http.HttpServletRequest
 
-private const val AUTH_TOKEN_HEADER = "Authorization"
-
 @Slf4j
 @Component
 @RequiredArgsConstructor
@@ -34,7 +34,7 @@ class AuthUserResolver : HandlerMethodArgumentResolver {
         val isMatchType: Boolean = (parameter.parameterType == User::class.java)
 
         // token 체크
-        httpServletRequest.getHeader(AUTH_TOKEN_HEADER)
+        AuthUtils.extractToken(httpServletRequest)
         return hasAnnotation && isMatchType
     }
 
@@ -44,7 +44,7 @@ class AuthUserResolver : HandlerMethodArgumentResolver {
         webRequest: NativeWebRequest,
         binderFactory: WebDataBinderFactory?,
     ): User {
-        val authToken: String = webRequest.getHeader(AUTH_TOKEN_HEADER) ?: return null
+        val authToken: String = extractTokenByWebRequest(webRequest)
 
         tokenProvider.isValidToken(authToken)
 
