@@ -11,10 +11,10 @@ import java.util.*
 
 class JWTTokenProvider: TokenProvider {
     @Value("\${jwt.token.secret.key}")
-    private val tokenSecretKey: String? = null
+    private lateinit var tokenSecretKey: String
 
     @Value("\${jwt.token.expiration.seconds}")
-    private val expireTime: Long = 0
+    private var expireTime: Long = 0
 
     override fun createToken(user: User): String {
         val claims: Claims = Jwts.claims()
