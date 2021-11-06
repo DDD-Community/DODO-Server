@@ -55,8 +55,8 @@ class AuthAdviceController {
      * 409 Conflict
      * 이미 동일한 정보로 등록한 회원이 존재하는 경우
      */
-    @ExceptionHandler(OAuthExistException::class)
-    protected fun handleOAuthUserExistException(exception: OAuthExistException): ResponseEntity<String> {
+    @ExceptionHandler(UserAlreadyExistException::class)
+    protected fun handleOAuthUserExistException(exception: UserAlreadyExistException): ResponseEntity<String> {
         log.error(exception.message, exception)
         return ResponseEntity.status(HttpStatus.CONFLICT).body(exception.message)
     }
