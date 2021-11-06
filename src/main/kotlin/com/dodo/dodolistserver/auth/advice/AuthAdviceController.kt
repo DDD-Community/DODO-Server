@@ -43,7 +43,7 @@ class AuthAdviceController {
 
     /**
      * 400 Bad Request
-     * OAuth 요청 정보가 적절하지 못한 경우
+     * Auth 요청 정보가 적절하지 못한 경우
      */
     @ExceptionHandler(InvalidParameterException::class)
     protected fun handleParamterIsNotValidException(exception: InvalidParameterException): ResponseEntity<String> {
@@ -53,7 +53,7 @@ class AuthAdviceController {
 
     /**
      * 409 Conflict
-     * 이미 동일한 OAUTh로 등록한 회원이 존재하는 경우
+     * 이미 동일한 정보로 등록한 회원이 존재하는 경우
      */
     @ExceptionHandler(OAuthExistException::class)
     protected fun handleOAuthUserExistException(exception: OAuthExistException): ResponseEntity<String> {
