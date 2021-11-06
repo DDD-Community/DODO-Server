@@ -43,14 +43,12 @@ class AuthUserResolver : HandlerMethodArgumentResolver {
         mavContainer: ModelAndViewContainer?,
         webRequest: NativeWebRequest,
         binderFactory: WebDataBinderFactory?,
-    ): User? {
+    ): User {
         val authToken: String = webRequest.getHeader(AUTH_TOKEN_HEADER) ?: return null
 
-        if (tokenProvider.isValidToken(authToken)) {
-            val userId = tokenProvider.extractIdByToken(authToken)
-            return userRepository.findByIdOrNull(userId)?: throw UserNotFoundException()
-        }
+        tokenProvider.isValidToken(authToken)
 
-        return null
+        val userId = tokenProvider.extractIdByToken(authToken)
+        return userRepository.findByIdOrNull(userId)?: throw UserNotFoundException()
     }
 }

@@ -51,11 +51,10 @@ class JWTTokenProvider: TokenProvider {
         }
     }
 
-    override fun isValidToken(token: String): Boolean {
+    override fun isValidToken(token: String) {
         val expireDate: Date = getClaimFromToken<Date>(token, Claims::getExpiration)
         if (expireDate.before(Date())) {
             throw TokenExpireException()
         }
-        return true
     }
 }

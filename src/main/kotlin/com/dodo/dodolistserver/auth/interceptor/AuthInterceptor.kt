@@ -19,12 +19,12 @@ class AuthInterceptor : HandlerInterceptor {
     private lateinit var tokenProvider: TokenProvider
 
     override fun preHandle(request: HttpServletRequest, response: HttpServletResponse, handler: Any): Boolean {
-        return validateAccessToken(request)
-//        return true
+        validateAccessToken(request)
+        return true
     }
 
-    private fun validateAccessToken(request: HttpServletRequest): Boolean {
+    private fun validateAccessToken(request: HttpServletRequest) {
         val accessToken: String = AuthUtils.extractToken(request)
-        return tokenProvider.isValidToken(accessToken)
+        tokenProvider.isValidToken(accessToken)
     }
 }
