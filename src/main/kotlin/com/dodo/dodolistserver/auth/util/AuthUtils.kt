@@ -9,6 +9,6 @@ object AuthUtils {
     private const val AUTH_TOKEN_HEADER = "Authorization"
 
     fun extractToken(request: HttpServletRequest): String {
-        return request.getHeader(AUTH_TOKEN_HEADER)
+        return request.getHeader(AUTH_TOKEN_HEADER)?: throw AuthHeaderOmittedException()
     }
 }
