@@ -29,14 +29,13 @@ apply(plugin="org.jetbrains.kotlin.plugin.allopen")
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     compileOnly("org.projectlombok:lombok")
     runtimeOnly("org.mariadb.jdbc:mariadb-java-client")
     annotationProcessor("org.projectlombok:lombok")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
-    implementation("joda-time:joda-time:2.10.12")
-    implementation("com.github.debop:koda-time:1.2.1")
     implementation("io.jsonwebtoken:jjwt:0.9.1")
 }
 
