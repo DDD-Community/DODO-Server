@@ -32,9 +32,9 @@ class AuthUserResolver : HandlerMethodArgumentResolver {
     override fun supportsParameter(parameter: MethodParameter): Boolean {
         val hasAnnotation = parameter.getParameterAnnotation(AuthUser::class.java) != null
         val isMatchType: Boolean = (parameter.parameterType == User::class.java)
-        if (hasAnnotation && httpServletRequest.getHeader(AUTH_TOKEN_HEADER) == null) {
-            throw AuthHeaderOmittedException()
-        }
+
+        // token 체크
+        httpServletRequest.getHeader(AUTH_TOKEN_HEADER)
         return hasAnnotation && isMatchType
     }
 
