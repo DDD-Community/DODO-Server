@@ -1,9 +1,44 @@
 package com.dodo.dodolistserver.task
 
-interface TaskService {
-    fun createTask(task: Task): TaskDto?
-    fun getTaskByTaskId(taskId: Long): TaskDto?
-    fun getTaskByEpicId(epicId: Long): List<TaskDto>
-    fun getTaskByUserId(userId: Long): List<TaskDto>
-    fun editTask(task: Task): TaskDto?
+import org.springframework.stereotype.Service
+
+@Service
+class TaskService(private val taskRepository: TaskRepository, private val taskMapper: TaskMapper) {
+
+    fun createTask(task: Task): TaskDto? {
+        val createdTask = taskMapper.toDto(taskRepository.save(task))
+
+        return createdTask
+    }
+
+    fun getTaskByTaskId(taskId: Long): TaskDto? {
+        val selectedTask = taskMapper.toDto(taskRepository.findById(taskId).get())
+
+        return selectedTask
+    }
+
+    fun getTaskByEpicId(epicId: Long): List<TaskDto> {
+        val epicTasks = taskMapper.toDtos(taskRepository.findByEpicId(epicId))
+
+        return epicTasks
+    }
+
+    fun getTaskByUserId(userId: Long): List<TaskDto> {
+        val userTasks = taskMapper.toDtos(taskRepository.findByUserId(userId))
+
+        return userTasks
+    }
+
+    @org.springframework.transaction.annotation.Transactional(rollbackFor=[Exception::class])
+    fun editTask(task: Task): TaskDto? {
+        val existTask = taskRepository.findById(task.id)
+
+        if(existTask.isPresent) {
+            val editedTask = taskMapper.toDto(taskRepository.save(task))
+
+            return editedTask
+        }
+        return null
+    }
+
 }
