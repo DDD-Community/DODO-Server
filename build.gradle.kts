@@ -38,6 +38,9 @@ dependencies {
     compileOnly("org.projectlombok:lombok")
     implementation("org.projectlombok:lombok-mapstruct-binding:0.2.0")
 
+    implementation("org.slf4j:jcl-over-slf4j:1.7.32")
+    implementation("ch.qos.logback:logback-classic:1.2.6")
+
     kapt("org.projectlombok:lombok")
     kapt("org.mapstruct:mapstruct-processor:1.4.2.Final")
 //    annotationProcessor("org.projectlombok:lombok-mapstruct-binding:0.2.0")
