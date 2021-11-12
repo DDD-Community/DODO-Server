@@ -11,10 +11,8 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
 
 @Configuration
-@RequiredArgsConstructor
-class WebMvcConfig : WebMvcConfigurer {
-    private lateinit var authUserResolver: AuthUserResolver
-    private lateinit var authInterceptor: AuthInterceptor
+class WebMvcConfig(private val authUserResolver: AuthUserResolver,
+        private val authInterceptor: AuthInterceptor)  : WebMvcConfigurer{
 
     override fun addInterceptors(registry: InterceptorRegistry) {
         registry.addInterceptor(authInterceptor)

@@ -1,0 +1,41 @@
+package com.dodo.dodolistserver.epic
+
+import lombok.RequiredArgsConstructor
+import org.mapstruct.factory.Mappers
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.stereotype.Service
+
+
+@Service
+@RequiredArgsConstructor
+class EpicService @Autowired constructor(private val epicRepository: EpicRepository, private val epicMapper: EpicMapper) {
+
+    fun createEpic(epic: Epic): EpicDto? {
+        val createdEpic = epicMapper.toDto(epicRepository.save(epic))
+
+        return createdEpic
+    }
+
+    fun getEpicByEpicId(epicId: Long): EpicDto? {
+        val selectedEpic = epicMapper.toDto(epicRepository.findById(epicId).get())
+
+        return selectedEpic
+    }
+
+    fun getEpicByProjectId(projectId: Long): List<EpicDto> {
+        val projectEpic = epicMapper.toDtos(epicRepository.findByProjectId(projectId))
+
+        return projectEpic
+    }
+
+    @org.springframework.transaction.annotation.Transactional(rollbackFor=[Exception::class])
+    fun editEpic(epic: Epic): EpicDto? {
+        val existEpic = epicRepository.findById(epic.id)
+
+        if(existEpic.isPresent) {
+            val editedEpic = epicMapper.toDto(epicRepository.save(epic))
+            return editedEpic
+        }
+        return null
+    }
+}
