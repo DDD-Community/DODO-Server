@@ -46,7 +46,6 @@ dependencies {
 //    annotationProcessor("org.projectlombok:lombok-mapstruct-binding:0.2.0")
 
     runtimeOnly("org.mariadb.jdbc:mariadb-java-client")
-    annotationProcessor("org.projectlombok:lombok")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     implementation("io.jsonwebtoken:jjwt:0.9.1")
 }
