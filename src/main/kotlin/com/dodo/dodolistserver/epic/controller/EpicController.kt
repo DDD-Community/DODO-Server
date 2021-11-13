@@ -1,8 +1,9 @@
-package com.dodo.dodolistserver.epic
+package com.dodo.dodolistserver.epic.controller
 
 import com.dodo.dodolistserver.common.dto.ResponseDto
 import com.dodo.dodolistserver.common.message.ResponseMessage
-import lombok.RequiredArgsConstructor
+import com.dodo.dodolistserver.epic.service.EpicService
+import com.dodo.dodolistserver.epic.dto.EpicDto
 import lombok.extern.slf4j.Slf4j
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity

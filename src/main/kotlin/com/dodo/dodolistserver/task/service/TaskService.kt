@@ -1,5 +1,8 @@
-package com.dodo.dodolistserver.task
+package com.dodo.dodolistserver.task.service
 
+import com.dodo.dodolistserver.task.dto.TaskDto
+import com.dodo.dodolistserver.task.dto.TaskMapper
+import com.dodo.dodolistserver.task.repository.TaskRepository
 import org.springframework.stereotype.Service
 
 @Service

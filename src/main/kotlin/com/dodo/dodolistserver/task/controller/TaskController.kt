@@ -1,7 +1,9 @@
-package com.dodo.dodolistserver.task
+package com.dodo.dodolistserver.task.controller
 
 import com.dodo.dodolistserver.common.dto.ResponseDto
 import com.dodo.dodolistserver.common.message.ResponseMessage
+import com.dodo.dodolistserver.task.dto.TaskDto
+import com.dodo.dodolistserver.task.service.TaskService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*

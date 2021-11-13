@@ -1,5 +1,8 @@
-package com.dodo.dodolistserver.project
+package com.dodo.dodolistserver.project.service
 
+import com.dodo.dodolistserver.project.dto.ProjectDto
+import com.dodo.dodolistserver.project.dto.ProjectMapper
+import com.dodo.dodolistserver.project.repository.ProjectRepository
 import org.springframework.stereotype.Service
 
 @Service

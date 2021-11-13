@@ -1,7 +1,9 @@
-package com.dodo.dodolistserver.project
+package com.dodo.dodolistserver.project.controller
 
 import com.dodo.dodolistserver.common.dto.ResponseDto
 import com.dodo.dodolistserver.common.message.ResponseMessage
+import com.dodo.dodolistserver.project.dto.ProjectDto
+import com.dodo.dodolistserver.project.service.ProjectService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*

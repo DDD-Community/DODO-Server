@@ -1,11 +1,9 @@
-package com.dodo.dodolistserver.epic
+package com.dodo.dodolistserver.epic.dto
 
-import org.mapstruct.InjectionStrategy
+import com.dodo.dodolistserver.epic.entity.Epic
 import org.mapstruct.Mapper
 import org.mapstruct.Mapping
 import org.mapstruct.Mappings
-import org.mapstruct.factory.Mappers
-import org.mapstruct.factory.Mappers.getMapper
 
 @Mapper(componentModel = "spring")
 interface EpicMapper {

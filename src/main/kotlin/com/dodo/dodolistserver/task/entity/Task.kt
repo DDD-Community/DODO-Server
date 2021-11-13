@@ -1,4 +1,4 @@
-package com.dodo.dodolistserver.task
+package com.dodo.dodolistserver.task.entity
 
 import lombok.Getter
 import java.time.LocalDateTime

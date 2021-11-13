@@ -1,7 +1,9 @@
-package com.dodo.dodolistserver.epic
+package com.dodo.dodolistserver.epic.service
 
+import com.dodo.dodolistserver.epic.dto.EpicDto
+import com.dodo.dodolistserver.epic.dto.EpicMapper
+import com.dodo.dodolistserver.epic.repository.EpicRepository
 import lombok.RequiredArgsConstructor
-import org.mapstruct.factory.Mappers
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
