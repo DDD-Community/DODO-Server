@@ -1,7 +1,9 @@
-package com.dodo.dodolistserver.epic
+package com.dodo.dodolistserver.epic.service
 
+import com.dodo.dodolistserver.epic.dto.EpicDto
+import com.dodo.dodolistserver.epic.dto.EpicMapper
+import com.dodo.dodolistserver.epic.repository.EpicRepository
 import lombok.RequiredArgsConstructor
-import org.mapstruct.factory.Mappers
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
@@ -10,8 +12,9 @@ import org.springframework.stereotype.Service
 @RequiredArgsConstructor
 class EpicService @Autowired constructor(private val epicRepository: EpicRepository, private val epicMapper: EpicMapper) {
 
-    fun createEpic(epic: Epic): EpicDto? {
-        val createdEpic = epicMapper.toDto(epicRepository.save(epic))
+    fun createEpic(epicDto: EpicDto): EpicDto? {
+        val epicEntity = epicMapper.toEntity(epicDto)
+        val createdEpic = epicMapper.toDto(epicRepository.save(epicEntity))
 
         return createdEpic
     }
@@ -29,11 +32,12 @@ class EpicService @Autowired constructor(private val epicRepository: EpicReposit
     }
 
     @org.springframework.transaction.annotation.Transactional(rollbackFor=[Exception::class])
-    fun editEpic(epic: Epic): EpicDto? {
-        val existEpic = epicRepository.findById(epic.id)
+    fun editEpic(epicDto: EpicDto): EpicDto? {
+        val epicEntity = epicMapper.toEntity(epicDto)
+        val existEpic = epicRepository.findById(epicEntity.id)
 
         if(existEpic.isPresent) {
-            val editedEpic = epicMapper.toDto(epicRepository.save(epic))
+            val editedEpic = epicMapper.toDto(epicRepository.save(epicEntity))
             return editedEpic
         }
         return null

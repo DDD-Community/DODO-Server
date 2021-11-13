@@ -1,12 +1,16 @@
-package com.dodo.dodolistserver.project
+package com.dodo.dodolistserver.project.service
 
+import com.dodo.dodolistserver.project.dto.ProjectDto
+import com.dodo.dodolistserver.project.dto.ProjectMapper
+import com.dodo.dodolistserver.project.repository.ProjectRepository
 import org.springframework.stereotype.Service
 
 @Service
 class ProjectService(private val projectRepository: ProjectRepository, private val projectMapper: ProjectMapper) {
 
-    fun createProject(project: Project): ProjectDto? {
-        val createdProject = projectMapper.toDto(projectRepository.save(project))
+    fun createProject(projectDto: ProjectDto): ProjectDto? {
+        val projectEntity = projectMapper.toEntity(projectDto)
+        val createdProject = projectMapper.toDto(projectRepository.save(projectEntity))
 
         return createdProject
     }
@@ -24,11 +28,12 @@ class ProjectService(private val projectRepository: ProjectRepository, private v
     }
 
     @org.springframework.transaction.annotation.Transactional(rollbackFor=[Exception::class])
-    fun editProject(project: Project): ProjectDto? {
-        val existProject = projectRepository.findById(project.id)
+    fun editProject(projectDto: ProjectDto): ProjectDto? {
+        val projectEntity = projectMapper.toEntity(projectDto)
+        val existProject = projectRepository.findById(projectEntity.id)
 
         if(existProject.isPresent) {
-            val editedProject = projectMapper.toDto(projectRepository.save(project))
+            val editedProject = projectMapper.toDto(projectRepository.save(projectEntity))
             return editedProject
         }
         return null

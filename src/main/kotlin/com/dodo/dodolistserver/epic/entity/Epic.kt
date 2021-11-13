@@ -1,4 +1,4 @@
-package com.dodo.dodolistserver.epic
+package com.dodo.dodolistserver.epic.entity
 
 import lombok.Getter
 import java.time.LocalDateTime

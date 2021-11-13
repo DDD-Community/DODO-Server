@@ -1,4 +1,4 @@
-package com.dodo.dodolistserver.epic
+package com.dodo.dodolistserver.epic.dto
 
 import lombok.AllArgsConstructor
 import lombok.Builder

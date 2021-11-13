@@ -1,4 +1,4 @@
-package com.dodo.dodolistserver.project
+package com.dodo.dodolistserver.project.dto
 
 import lombok.Builder
 import lombok.Getter

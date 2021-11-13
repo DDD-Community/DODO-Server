@@ -1,5 +1,6 @@
-package com.dodo.dodolistserver.project
+package com.dodo.dodolistserver.project.dto
 
+import com.dodo.dodolistserver.project.entity.Project
 import org.mapstruct.Mapper
 import org.mapstruct.Mapping
 import org.mapstruct.Mappings
