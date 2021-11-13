@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.*
 class TaskController(private val taskService: TaskService) {
 
     @PostMapping
-    fun createTask(@RequestBody task: Task): ResponseEntity<Any> {
-        val createdTask = taskService.createTask(task)
+    fun createTask(@RequestBody taskDto: TaskDto): ResponseEntity<Any> {
+        val createdTask = taskService.createTask(taskDto)
 
         return ResponseEntity.ok()
             .body(ResponseDto.of(HttpStatus.OK, ResponseMessage.SUCCESS, createdTask))
@@ -40,8 +40,8 @@ class TaskController(private val taskService: TaskService) {
     }
 
     @PutMapping
-    fun editTask(@RequestBody task: Task): ResponseEntity<Any> {
-        val editedTask = taskService.editTask(task)
+    fun editTask(@RequestBody taskDto: TaskDto): ResponseEntity<Any> {
+        val editedTask = taskService.editTask(taskDto)
 
         return ResponseEntity.ok()
             .body(ResponseDto.of(HttpStatus.OK, ResponseMessage.SUCCESS, editedTask))

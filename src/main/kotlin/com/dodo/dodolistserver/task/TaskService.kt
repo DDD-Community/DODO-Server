@@ -5,8 +5,9 @@ import org.springframework.stereotype.Service
 @Service
 class TaskService(private val taskRepository: TaskRepository, private val taskMapper: TaskMapper) {
 
-    fun createTask(task: Task): TaskDto? {
-        val createdTask = taskMapper.toDto(taskRepository.save(task))
+    fun createTask(taskDto: TaskDto): TaskDto? {
+        val taskEntity = taskMapper.toEntity(taskDto)
+        val createdTask = taskMapper.toDto(taskRepository.save(taskEntity))
 
         return createdTask
     }
@@ -30,11 +31,12 @@ class TaskService(private val taskRepository: TaskRepository, private val taskMa
     }
 
     @org.springframework.transaction.annotation.Transactional(rollbackFor=[Exception::class])
-    fun editTask(task: Task): TaskDto? {
-        val existTask = taskRepository.findById(task.id)
+    fun editTask(taskDto: TaskDto): TaskDto? {
+        val taskEntity = taskMapper.toEntity(taskDto)
+        val existTask = taskRepository.findById(taskEntity.id)
 
         if(existTask.isPresent) {
-            val editedTask = taskMapper.toDto(taskRepository.save(task))
+            val editedTask = taskMapper.toDto(taskRepository.save(taskEntity))
 
             return editedTask
         }

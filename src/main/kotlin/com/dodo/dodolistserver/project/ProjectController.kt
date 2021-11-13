@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.*
 class ProjectController(private val projectService: ProjectService) {
 
     @PostMapping
-    fun createProject(@RequestBody project: Project): ResponseEntity<Any> {
-        val createdProject = projectService.createProject(project)
+    fun createProject(@RequestBody projectDto: ProjectDto): ResponseEntity<Any> {
+        val createdProject = projectService.createProject(projectDto)
 
         return ResponseEntity.ok()
             .body(ResponseDto.of(HttpStatus.OK, ResponseMessage.SUCCESS, createdProject))
@@ -33,8 +33,8 @@ class ProjectController(private val projectService: ProjectService) {
     }
 
     @PutMapping
-    fun editProject(@RequestBody project: Project): ResponseEntity<Any> {
-        val editedProject = projectService.editProject(project)
+    fun editProject(@RequestBody projectDto: ProjectDto): ResponseEntity<Any> {
+        val editedProject = projectService.editProject(projectDto)
 
         return ResponseEntity.ok()
             .body(ResponseDto.of(HttpStatus.OK, ResponseMessage.SUCCESS, editedProject))
