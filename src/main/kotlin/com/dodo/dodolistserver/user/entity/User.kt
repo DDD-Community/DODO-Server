@@ -28,11 +28,11 @@ class User (
     @Enumerated(EnumType.STRING)
     val type: UserType,
 
-    val name: String,
+    var name: String,
 
-    val password: String? = null,
+    private var password: String? = null,
 
-    val birth: String? = null,
+    var birth: String? = null,
 
     @CreationTimestamp
     @Column(name = "created_at")
@@ -51,6 +51,15 @@ class User (
 ) {
     fun updateLastLogin() {
         this.lastLogin = Timestamp(System.currentTimeMillis())
+    }
+
+    fun updateUserProfile(name: String, birth: String) {
+        this.name = name
+        this.birth = birth
+    }
+
+    fun updatePassword(password: String) {
+        this.password = BCrypt.hashpw(password, BCrypt.gensalt())
     }
 
     fun checkPassword(pw: String): Boolean {

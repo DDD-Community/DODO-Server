@@ -1,6 +1,7 @@
 package com.dodo.dodolistserver.user.service
 
 import com.dodo.dodolistserver.user.dto.GetUserDataResponseDto
+import com.dodo.dodolistserver.user.dto.UpdateUserProfileRequestDto
 import com.dodo.dodolistserver.user.dto.UserProjectDataResponseDto
 import com.dodo.dodolistserver.user.entity.User
 import lombok.RequiredArgsConstructor
@@ -28,8 +29,13 @@ class UserService {
     }
 
     @Transactional
-    fun updatePassword(newPassword: String) {
+    fun updatePassword(user: User, newPassword: String) {
+        user.updatePassword(newPassword)
+    }
 
+    @Transactional
+    fun updateUserProfile(user: User, request: UpdateUserProfileRequestDto) {
+        user.updateUserProfile(request.name, request.birth)
     }
 
 }

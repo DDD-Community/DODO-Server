@@ -59,7 +59,7 @@ class UserController(
     ): ResponseEntity<Void> {
         AuthUtils.validateUser(updatePasswordDto.userId, user)
 
-        userService.updatePassword(updatePasswordDto.newPassword)
+        userService.updatePassword(user, updatePasswordDto.newPassword)
         return ResponseEntity.ok().build()
     }
 
@@ -81,5 +81,16 @@ class UserController(
         )
 
         return ResponseEntity.ok(response)
+    }
+
+    @PutMapping("/api/v1/user/profile")
+    fun updateUserProfile(
+        @AuthUser user: User,
+        @RequestBody @Valid request: UpdateUserProfileRequestDto
+    ): ResponseEntity<Void> {
+        AuthUtils.validateUser(request.id, user)
+        userService.updateUserProfile(user, request)
+
+        return ResponseEntity.ok().build()
     }
 }
