@@ -63,9 +63,14 @@ class AuthAdviceController {
 
     /**
      * 401 Unauthorized
-     * token이 적절하지 않을 경우
+     * token 혹은 password가 적절하지 않을 경우
      */
-    @ExceptionHandler(AuthHeaderOmittedException::class, TokenValidationException::class, TokenExpireException::class)
+    @ExceptionHandler(
+        WrongPasswordException::class,
+        AuthHeaderOmittedException::class,
+        TokenValidationException::class,
+        TokenExpireException::class
+    )
     protected fun handleUnAuthorizedException(exception: RuntimeException): ResponseEntity<String> {
         log.error(exception.message, exception)
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(exception.message)
