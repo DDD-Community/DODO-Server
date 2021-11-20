@@ -31,10 +31,13 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-validation")
+    implementation ("org.springframework.boot:spring-boot-starter-webflux")
+    implementation ("org.mindrot:jbcrypt:0.4")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
     implementation("org.mapstruct:mapstruct:1.4.2.Final")
+    implementation("org.junit.jupiter:junit-jupiter:5.4.2")
     compileOnly("org.projectlombok:lombok")
     implementation("org.projectlombok:lombok-mapstruct-binding:0.2.0")
 

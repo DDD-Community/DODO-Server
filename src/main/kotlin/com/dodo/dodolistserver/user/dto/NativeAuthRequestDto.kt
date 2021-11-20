@@ -13,9 +13,6 @@ data class NativeAuthRequestDto(
     @NotBlank
     val email: String,
 
-    @NotNull
-    val userType: UserType,
-
     @NotBlank
     val password: String
 )

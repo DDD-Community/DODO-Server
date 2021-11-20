@@ -17,15 +17,16 @@ import org.mindrot.jbcrypt.BCrypt
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import java.security.InvalidParameterException
-import java.util.*
 
 @Service
 @RequiredArgsConstructor
-@Transactional
-class AuthService {
-    private lateinit var authenticationManager: AuthenticationManager
-    private lateinit var userRepository: UserRepository
-    private lateinit var tokenProvider: TokenProvider
+@Transactional(readOnly = true)
+class AuthService(
+    private val authenticationManager: AuthenticationManager,
+    private val userRepository: UserRepository,
+    private val tokenProvider: TokenProvider
+) {
+
 
     @Transactional
     fun oAuthAuthenticate(type: String, authRequestDto: OAuthRequestDto): AuthResultDto {
@@ -58,8 +59,9 @@ class AuthService {
         )
     }
 
+    @Transactional
     fun nativeAuthenticate(authRequestDto: NativeAuthRequestDto): AuthResultDto {
-        val existUser: User = userRepository.findByEmailAndType(authRequestDto.email, authRequestDto.userType)
+        val existUser: User = userRepository.findByEmailAndType(authRequestDto.email, UserType.NATIVE)
             ?: throw UserNotFoundException()
 
         if (!existUser.checkPassword(authRequestDto.password)) throw WrongPasswordException()
@@ -70,28 +72,26 @@ class AuthService {
 
         return AuthResultDto(
             userId = existUser.id!!,
-            userType = authRequestDto.userType,
+            userType = existUser.type,
             token = token
         )
     }
 
     @Transactional
-    fun signUp(creationRequestDto: CreateUserRequestDto): AuthResultDto {
-        // TODO : 회원 가입 시 google token 인증
+    fun signUp(request: CreateUserRequestDto): AuthResultDto {
+        val tmp = userRepository.findByEmailAndType(request.email, UserType.NATIVE)
 
-        userRepository.findByEmailAndType(creationRequestDto.email, creationRequestDto.userType)?.let {
+        tmp?.let {
             throw UserAlreadyExistException()
         }
 
 
         val newUser = User(
-            email = creationRequestDto.email,
-            name = creationRequestDto.name,
-            type = creationRequestDto.userType,
-            password = creationRequestDto.password?.let {
-                BCrypt.hashpw(creationRequestDto.password, BCrypt.gensalt())
-            },
-            birth = creationRequestDto.birth
+            email = request.email,
+            name = request.name,
+            type = UserType.NATIVE,
+            password = BCrypt.hashpw(request.password, BCrypt.gensalt()),
+            birth = request.birth
         )
 
         val saveUser = userRepository.save(newUser)
@@ -99,7 +99,7 @@ class AuthService {
 
         return AuthResultDto(
             userId = saveUser.id!!,
-            userType = creationRequestDto.userType,
+            userType = saveUser.type,
             token = token
         )
     }

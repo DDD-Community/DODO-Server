@@ -1,5 +1,10 @@
 package com.dodo.dodolistserver.user.entity
 
+import com.dodo.dodolistserver.epic.entity.Epic
+import com.dodo.dodolistserver.project.entity.Project
+import com.dodo.dodolistserver.task.entity.Task
+import org.hibernate.annotations.CreationTimestamp
+import org.mindrot.jbcrypt.BCrypt
 import java.sql.Timestamp
 import javax.persistence.*
 
@@ -14,7 +19,7 @@ import javax.persistence.*
 class User (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long,
+    val id: Long? = null,
 
     @Column(name = "email")
     val email: String,
@@ -23,28 +28,32 @@ class User (
     @Enumerated(EnumType.STRING)
     val type: UserType,
 
-    val nickname: String,
+    val name: String,
 
-    val password: String,
+    val password: String? = null,
 
-    val birth: String,
+    val birth: String? = null,
 
-    val createdDate: Timestamp,
+    @CreationTimestamp
+    @Column(name = "created_at")
+    val createdAt: Timestamp? = null,
 
-    var lastLogin: Timestamp
-
-    /*
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-    val tops
+    var lastLogin: Timestamp? = null,
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-    val mids
+    val projects: List<Project> = emptyList(),
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-    val bots
-     */
+    val epics: List<Epic> = emptyList(),
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    val tasks: List<Task> = emptyList(),
 ) {
-    fun updateLastLogin(): String {
-        return ""
+    fun updateLastLogin() {
+        this.lastLogin = Timestamp(System.currentTimeMillis())
+    }
+
+    fun checkPassword(pw: String): Boolean {
+        return BCrypt.checkpw(pw, this.password!!)
     }
 }
