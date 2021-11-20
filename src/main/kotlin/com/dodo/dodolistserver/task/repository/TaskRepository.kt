@@ -1,5 +1,6 @@
-package com.dodo.dodolistserver.task
+package com.dodo.dodolistserver.task.repository
 
+import com.dodo.dodolistserver.task.entity.Task
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 

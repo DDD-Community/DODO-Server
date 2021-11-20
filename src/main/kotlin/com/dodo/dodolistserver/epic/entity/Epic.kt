@@ -1,11 +1,13 @@
-package com.dodo.dodolistserver.epic
+package com.dodo.dodolistserver.epic.entity
 
 import lombok.Getter
+import lombok.Setter
 import java.time.LocalDateTime
 import javax.persistence.*
 
 @Entity
 @Getter
+@Setter
 @Table(name="epics")
 class Epic (
     @Id
@@ -15,7 +17,7 @@ class Epic (
 //    @JoinColumn(name="project_id")
 //    val project: Project,
     val projectId: Long,
-    val middleGoal: String,
-    val dueDate: LocalDateTime,
-    val createdAt: LocalDateTime?
+    var middleGoal: String,
+    var dueDate: LocalDateTime,
+    var createdAt: LocalDateTime?
 )

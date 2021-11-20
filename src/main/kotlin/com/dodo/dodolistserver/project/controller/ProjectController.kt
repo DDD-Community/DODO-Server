@@ -1,7 +1,10 @@
-package com.dodo.dodolistserver.project
+package com.dodo.dodolistserver.project.controller
 
 import com.dodo.dodolistserver.common.dto.ResponseDto
 import com.dodo.dodolistserver.common.message.ResponseMessage
+import com.dodo.dodolistserver.project.dto.CreateProjectRequestDto
+import com.dodo.dodolistserver.project.dto.EditProjectRequestDto
+import com.dodo.dodolistserver.project.service.ProjectService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
@@ -11,8 +14,8 @@ import org.springframework.web.bind.annotation.*
 class ProjectController(private val projectService: ProjectService) {
 
     @PostMapping
-    fun createProject(@RequestBody project: Project): ResponseEntity<Any> {
-        val createdProject = projectService.createProject(project)
+    fun createProject(@RequestBody createProjectRequestDto: CreateProjectRequestDto): ResponseEntity<Any> {
+        val createdProject = projectService.createProject(createProjectRequestDto)
 
         return ResponseEntity.ok()
             .body(ResponseDto.of(HttpStatus.OK, ResponseMessage.SUCCESS, createdProject))
@@ -33,8 +36,8 @@ class ProjectController(private val projectService: ProjectService) {
     }
 
     @PutMapping
-    fun editProject(@RequestBody project: Project): ResponseEntity<Any> {
-        val editedProject = projectService.editProject(project)
+    fun editProject(@RequestBody editProjectRequestDto: EditProjectRequestDto): ResponseEntity<Any> {
+        val editedProject = projectService.editProject(editProjectRequestDto)
 
         return ResponseEntity.ok()
             .body(ResponseDto.of(HttpStatus.OK, ResponseMessage.SUCCESS, editedProject))

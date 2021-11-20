@@ -1,4 +1,4 @@
-package com.dodo.dodolistserver.task
+package com.dodo.dodolistserver.task.dto
 
 import lombok.AllArgsConstructor
 import lombok.Builder
@@ -7,7 +7,7 @@ import java.time.LocalDateTime
 
 @Getter
 @Builder
-class TaskDto(
+class TaskResponseDto(
     val isDone: Boolean,
     val toDo: String,
     val comment: String,

@@ -1,4 +1,4 @@
-package com.dodo.dodolistserver.task
+package com.dodo.dodolistserver.task.entity
 
 import lombok.Getter
 import java.time.LocalDateTime
@@ -20,10 +20,10 @@ class Task (
 //    val user: User,
     val epicId: Long,
     val userId: Long,
-    val isDone: Boolean,
-    val toDo: String,
-    val comment: String,
-    val priority :Int,
-    val dueDate: LocalDateTime,
+    var isDone: Boolean,
+    var toDo: String,
+    var comment: String,
+    var priority :Int,
+    var dueDate: LocalDateTime,
     val createdAt: LocalDateTime?
 )

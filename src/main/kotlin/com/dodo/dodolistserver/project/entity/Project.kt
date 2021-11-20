@@ -1,4 +1,4 @@
-package com.dodo.dodolistserver.project
+package com.dodo.dodolistserver.project.entity
 
 import lombok.Getter
 import java.time.LocalDateTime
@@ -11,9 +11,9 @@ class Project (
     @Id @GeneratedValue
     val id: Long,
     val userId: Long,
-    val isDaily: Boolean,
-    val goal: String,
-    val dueDate: LocalDateTime,
-    val comment: String,
+    var isDaily: Boolean,
+    var goal: String,
+    var dueDate: LocalDateTime,
+    var comment: String,
     val createdAt: LocalDateTime?
 )

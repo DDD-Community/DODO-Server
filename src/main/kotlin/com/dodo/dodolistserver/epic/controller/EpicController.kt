@@ -1,8 +1,11 @@
-package com.dodo.dodolistserver.epic
+package com.dodo.dodolistserver.epic.controller
 
 import com.dodo.dodolistserver.common.dto.ResponseDto
 import com.dodo.dodolistserver.common.message.ResponseMessage
-import lombok.RequiredArgsConstructor
+import com.dodo.dodolistserver.epic.dto.CreateEpicRequestDto
+import com.dodo.dodolistserver.epic.dto.EditEpicRequestDto
+import com.dodo.dodolistserver.epic.dto.EpicResponseDto
+import com.dodo.dodolistserver.epic.service.EpicService
 import lombok.extern.slf4j.Slf4j
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -14,8 +17,8 @@ import org.springframework.web.bind.annotation.*
 class EpicController (private val epicService: EpicService) {
 
     @PostMapping
-    fun createEpic(@RequestBody epic: Epic): ResponseEntity<Any> {
-        val createdEpic = epicService.createEpic(epic)
+    fun createEpic(@RequestBody createEpicRequestDto: CreateEpicRequestDto): ResponseEntity<Any> {
+        val createdEpic = epicService.createEpic(createEpicRequestDto)
         return ResponseEntity.ok()
             .body(ResponseDto.of(HttpStatus.OK, ResponseMessage.SUCCESS, createdEpic))
     }
@@ -35,8 +38,8 @@ class EpicController (private val epicService: EpicService) {
     }
 
     @PutMapping
-    fun editEpic(@RequestBody epic: Epic): ResponseEntity<Any> {
-        val editedEpic = epicService.editEpic(epic)
+    fun editEpic(@RequestBody editEpicRequestDto: EditEpicRequestDto): ResponseEntity<Any> {
+        val editedEpic = epicService.editEpic(editEpicRequestDto)
         return ResponseEntity.ok()
             .body(ResponseDto.of(HttpStatus.OK, ResponseMessage.SUCCESS, editedEpic))
     }

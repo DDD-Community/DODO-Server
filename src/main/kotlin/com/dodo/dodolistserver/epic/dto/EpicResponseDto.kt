@@ -1,4 +1,4 @@
-package com.dodo.dodolistserver.epic
+package com.dodo.dodolistserver.epic.dto
 
 import lombok.AllArgsConstructor
 import lombok.Builder
@@ -8,7 +8,7 @@ import java.time.LocalDateTime
 
 @Getter
 @Builder
-class EpicDto (
+class EpicResponseDto (
     val middleGoal: String,
     val dueDate: LocalDateTime,
     val createdAt: LocalDateTime?

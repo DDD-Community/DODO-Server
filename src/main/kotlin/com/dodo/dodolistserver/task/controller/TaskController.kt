@@ -1,7 +1,10 @@
-package com.dodo.dodolistserver.task
+package com.dodo.dodolistserver.task.controller
 
 import com.dodo.dodolistserver.common.dto.ResponseDto
 import com.dodo.dodolistserver.common.message.ResponseMessage
+import com.dodo.dodolistserver.task.dto.CreateTaskRequestDto
+import com.dodo.dodolistserver.task.dto.EditTaskRequestDto
+import com.dodo.dodolistserver.task.service.TaskService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
@@ -11,8 +14,8 @@ import org.springframework.web.bind.annotation.*
 class TaskController(private val taskService: TaskService) {
 
     @PostMapping
-    fun createTask(@RequestBody task: Task): ResponseEntity<Any> {
-        val createdTask = taskService.createTask(task)
+    fun createTask(@RequestBody createTaskRequestDto: CreateTaskRequestDto): ResponseEntity<Any> {
+        val createdTask = taskService.createTask(createTaskRequestDto)
 
         return ResponseEntity.ok()
             .body(ResponseDto.of(HttpStatus.OK, ResponseMessage.SUCCESS, createdTask))
@@ -40,8 +43,8 @@ class TaskController(private val taskService: TaskService) {
     }
 
     @PutMapping
-    fun editTask(@RequestBody task: Task): ResponseEntity<Any> {
-        val editedTask = taskService.editTask(task)
+    fun editTask(@RequestBody editTaskRequestDto: EditTaskRequestDto): ResponseEntity<Any> {
+        val editedTask = taskService.editTask(editTaskRequestDto)
 
         return ResponseEntity.ok()
             .body(ResponseDto.of(HttpStatus.OK, ResponseMessage.SUCCESS, editedTask))
