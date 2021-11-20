@@ -9,12 +9,13 @@ import javax.validation.constraints.NotNull
 
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-data class AuthRequestDto(
+data class NativeAuthRequestDto(
+    @NotBlank
     val email: String,
 
     @NotNull
     val userType: UserType,
 
     @NotBlank
-    val accessToken: String
+    val password: String
 )
