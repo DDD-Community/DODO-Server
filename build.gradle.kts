@@ -46,10 +46,10 @@ dependencies {
 
     kapt("org.projectlombok:lombok")
     kapt("org.mapstruct:mapstruct-processor:1.4.2.Final")
-//    annotationProcessor("org.projectlombok:lombok-mapstruct-binding:0.2.0")
 
     runtimeOnly("org.mariadb.jdbc:mariadb-java-client")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    runtimeOnly ("com.h2database:h2")
     implementation("io.jsonwebtoken:jjwt:0.9.1")
 }
 
