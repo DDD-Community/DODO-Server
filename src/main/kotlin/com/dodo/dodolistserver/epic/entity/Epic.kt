@@ -4,6 +4,7 @@ import com.dodo.dodolistserver.project.entity.Project
 import com.dodo.dodolistserver.user.entity.User
 import lombok.Getter
 import lombok.Setter
+import org.hibernate.annotations.CreationTimestamp
 import java.time.LocalDateTime
 import javax.persistence.*
 
@@ -23,5 +24,6 @@ class Epic (
     val user: User,
     var middleGoal: String,
     var dueDate: LocalDateTime,
-    var createdAt: LocalDateTime?
+    @CreationTimestamp
+    var createdAt: LocalDateTime
 )

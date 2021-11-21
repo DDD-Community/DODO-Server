@@ -2,6 +2,7 @@ package com.dodo.dodolistserver.project.entity
 
 import com.dodo.dodolistserver.user.entity.User
 import lombok.Getter
+import org.hibernate.annotations.CreationTimestamp
 import java.time.LocalDateTime
 import javax.persistence.*
 
@@ -18,5 +19,6 @@ class Project (
     var goal: String,
     var dueDate: LocalDateTime,
     var comment: String,
-    val createdAt: LocalDateTime?
+    @CreationTimestamp
+    val createdAt: LocalDateTime
 )

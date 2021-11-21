@@ -3,6 +3,7 @@ package com.dodo.dodolistserver.task.entity
 import com.dodo.dodolistserver.epic.entity.Epic
 import com.dodo.dodolistserver.user.entity.User
 import lombok.Getter
+import org.hibernate.annotations.CreationTimestamp
 import java.time.LocalDateTime
 import javax.persistence.*
 
@@ -25,5 +26,6 @@ class Task (
     var comment: String,
     var priority :Int,
     var dueDate: LocalDateTime,
-    val createdAt: LocalDateTime?
+    @CreationTimestamp
+    val createdAt: LocalDateTime
 )
