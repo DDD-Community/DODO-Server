@@ -1,5 +1,6 @@
 package com.dodo.dodolistserver.project.entity
 
+import com.dodo.dodolistserver.user.entity.User
 import lombok.Getter
 import java.time.LocalDateTime
 import javax.persistence.*
@@ -10,7 +11,9 @@ import javax.persistence.*
 class Project (
     @Id @GeneratedValue
     val id: Long,
-    val userId: Long,
+    @ManyToOne
+    @JoinColumn(name="user_id")
+    val user: User,
     var isDaily: Boolean,
     var goal: String,
     var dueDate: LocalDateTime,

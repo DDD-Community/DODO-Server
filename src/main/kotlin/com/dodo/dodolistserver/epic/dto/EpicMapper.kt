@@ -13,13 +13,13 @@ interface EpicMapper {
     fun fromCreateRequestToEntity(createEpicRequestDto: CreateEpicRequestDto) : Epic
 
     @Mappings(
-            Mapping(target = "projectId", ignore = true)
+            Mapping(target = "project", ignore = true)
     )
     fun fromEditRequestToEntity(editEpicRequestDto: EditEpicRequestDto) : Epic
 
     @Mappings(
         Mapping(target = "id", ignore = true),
-        Mapping(target = "projectId", ignore = true)
+        Mapping(target = "project", ignore = true)
     )
     fun toEntities(epics: List<EpicResponseDto>) : List<Epic>
 

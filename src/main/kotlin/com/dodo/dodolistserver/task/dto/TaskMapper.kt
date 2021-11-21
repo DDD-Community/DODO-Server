@@ -13,15 +13,15 @@ interface TaskMapper {
     fun fromCreateRequestToEntity(createTaskRequestDto: CreateTaskRequestDto) : Task
 
     @Mappings(
-            Mapping(target = "epicId", ignore = true),
-            Mapping(target = "userId", ignore = true)
+            Mapping(target = "epic", ignore = true),
+            Mapping(target = "user", ignore = true)
     )
     fun fromEditRequestToEntity(editTaskRequestDto: EditTaskRequestDto) : Task
 
     @Mappings(
         Mapping(target = "id", ignore = true),
-        Mapping(target = "epicId", ignore = true),
-        Mapping(target = "userId", ignore = true)
+        Mapping(target = "epic", ignore = true),
+        Mapping(target = "user", ignore = true)
     )
     fun toEntities(taskResponseDtos: List<TaskResponseDto>) : List<Task>
 

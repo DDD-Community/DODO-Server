@@ -14,13 +14,13 @@ interface ProjectMapper {
     fun fromCreateRequestToEntity(createProjectRequestDto: CreateProjectRequestDto) : Project
 
     @Mappings(
-            Mapping(target = "userId", ignore = true)
+            Mapping(target = "user", ignore = true)
     )
     fun fromEditRequestToEntity(editProjectRequestDto: EditProjectRequestDto) : Project
 
     @Mappings(
         Mapping(target = "id", ignore = true),
-        Mapping(target = "userId", ignore = true)
+        Mapping(target = "user", ignore = true)
     )
     fun toEntities(projectResponseDtos: List<ProjectResponseDto>) : List<Project>
 
