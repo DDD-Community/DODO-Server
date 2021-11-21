@@ -1,5 +1,6 @@
 package com.dodo.dodolistserver.common.dto
 
+import com.dodo.dodolistserver.epic.dto.EpicResponseDto
 import com.fasterxml.jackson.annotation.JsonInclude
 import lombok.AllArgsConstructor
 import lombok.Getter

@@ -1,7 +1,7 @@
 package com.dodo.dodolistserver.auth.provider.auth
 
-import com.dodo.dodolistserver.user.entity.User
+import com.dodo.dodolistserver.auth.vo.TokenInfo
 
 interface AuthProvider {
-    fun auth(user: User, accessToken: String): User
+    fun auth(accessToken: String): TokenInfo
 }
