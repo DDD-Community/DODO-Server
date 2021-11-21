@@ -7,7 +7,7 @@ import java.time.LocalDateTime
 @Getter
 @Builder
 class CreateEpicRequestDto (
-        val projectId: Long,
+        var projectId: Long,
         val middleGoal: String,
         val dueDate: LocalDateTime,
         val createdAt: LocalDateTime?
