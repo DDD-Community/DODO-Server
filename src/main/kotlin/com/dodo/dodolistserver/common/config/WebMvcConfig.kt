@@ -17,6 +17,9 @@ class WebMvcConfig(private val authUserResolver: AuthUserResolver,
     override fun addInterceptors(registry: InterceptorRegistry) {
         registry.addInterceptor(authInterceptor)
             .addPathPatterns("/**")
+            .excludePathPatterns("/swagger-ui/**",
+                "/swagger-resources/**",
+                "/v3/api-docs/**")
     }
 
     override fun addCorsMappings(registry: CorsRegistry) {
