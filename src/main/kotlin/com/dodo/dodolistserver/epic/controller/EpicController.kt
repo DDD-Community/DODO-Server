@@ -6,6 +6,8 @@ import com.dodo.dodolistserver.epic.dto.CreateEpicRequestDto
 import com.dodo.dodolistserver.epic.dto.EditEpicRequestDto
 import com.dodo.dodolistserver.epic.dto.EpicResponseDto
 import com.dodo.dodolistserver.epic.service.EpicService
+import io.swagger.annotations.Api
+import io.swagger.annotations.ApiImplicitParam
 import io.swagger.annotations.ApiOperation
 import lombok.extern.slf4j.Slf4j
 import org.springframework.http.HttpStatus
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.*
 @Slf4j
 @RestController
 @RequestMapping("/api/v1/epics")
+@Api(value = "Epic API")
 class EpicController (private val epicService: EpicService) {
 
     @PostMapping
